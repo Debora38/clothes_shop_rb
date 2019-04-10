@@ -4,6 +4,7 @@ class Shopping_cart
   def initialize
     @items_in_cart = Array.new
     @total_cost = 0
+    @vouchers_applied = Array.new
   end
 
   def add_to_cart(item)
@@ -21,4 +22,10 @@ class Shopping_cart
     @total_cost -= item.price
     item.availability += 1
   end
+
+  def apply_voucher(voucher)
+    @vouchers_applied << voucher
+    @total_cost -= voucher.amount
+  end
+
 end

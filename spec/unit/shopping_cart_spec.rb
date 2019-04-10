@@ -33,4 +33,12 @@ RSpec.describe Shopping_cart do
     shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 0)
     expect { subject.add_to_cart(shoes) }.to raise_error('No availability')
   end
+
+  it "should update the total cost of the cart when a voucher is applied" do
+    shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4)
+    voucher = double('voucher', :amount => 5)
+    subject.add_to_cart(shoes)
+    subject.apply_voucher(voucher)
+    expect(subject.total_cost).to eq 94
+  end
 end
