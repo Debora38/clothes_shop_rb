@@ -8,7 +8,7 @@ class Categories
     @items = Array.new
   end
 
-  def add(name, price, availability)
+  def create_item(name, price, availability)
     new_item = Items.new(name, price, availability)
     @items << new_item
   end
