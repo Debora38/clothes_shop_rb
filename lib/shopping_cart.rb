@@ -13,5 +13,6 @@ class Shopping_cart
 
   def remove_item_from_cart(item)
     @items_in_cart.delete(item)
+    @total_cost -= item.price
   end
 end

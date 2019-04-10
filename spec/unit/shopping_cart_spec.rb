@@ -19,4 +19,13 @@ RSpec.describe Shopping_cart do
     subject.add_to_cart(shoes)
     expect(subject.total_cost).to eq 99
   end
+
+  it "should show the new total, when items are removed" do
+    shoes = double('shoes', :price => 99)
+    subject.add_to_cart(shoes)
+    subject.add_to_cart(shoes)
+    expect(subject.total_cost).to eq 198
+    subject.remove_item_from_cart(shoes)
+    expect(subject.total_cost).to eq 99
+  end
 end
