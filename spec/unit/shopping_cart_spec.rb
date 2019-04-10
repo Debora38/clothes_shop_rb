@@ -37,6 +37,7 @@ RSpec.describe Shopping_cart do
   it "should update the total cost of the cart when a voucher is applied" do
     shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4)
     voucher = double('voucher', :amount => 5)
+    subject.available_vouchers.push(voucher)
     subject.add_to_cart(shoes)
     subject.apply_voucher(voucher)
     expect(subject.total_cost).to eq 94
@@ -45,9 +46,18 @@ RSpec.describe Shopping_cart do
   it "should not apply more than 1 voucher" do
     shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4)
     voucher = double('voucher', :amount => 5)
+    subject.available_vouchers.push(voucher)
     subject.add_to_cart(shoes)
     subject.apply_voucher(voucher)
-    expect { subject.apply_voucher(voucher) }.to raise_error('Voucher already applied')
+    expect { subject.apply_voucher(voucher) }.to raise_error('A voucher is already applied')
     expect(subject.total_cost).to eq 94
+  end
+
+  it "should raise an error when an invalid voucher is applied" do
+    shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4)
+    voucher = double('voucher', :amount => 5)
+    invalid_voucher = double('invalid_voucher', :amount => 10)
+    subject.available_vouchers.push(voucher)
+    expect { subject.apply_voucher(invalid_voucher) }.to raise_error('Invalid voucher')
   end
 end

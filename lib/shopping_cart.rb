@@ -1,9 +1,11 @@
 class Shopping_cart
   attr_reader :items_in_cart, :total_cost
+  attr_accessor :available_vouchers
 
   def initialize
     @items_in_cart = Array.new
     @total_cost = 0
+    @available_vouchers = Array.new
     @vouchers_applied = Array.new
   end
 
@@ -25,10 +27,14 @@ class Shopping_cart
 
   def apply_voucher(voucher)
     if @vouchers_applied.length > 0
-      raise 'Voucher already applied'
+      raise 'A voucher is already applied'
     else
-      @vouchers_applied << voucher
-      @total_cost -= voucher.amount
+      if @available_vouchers.include?(voucher)
+        @vouchers_applied << voucher
+        @total_cost -= voucher.amount
+      else
+        raise 'Invalid voucher'
+      end
     end
   end
 

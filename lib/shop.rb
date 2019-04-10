@@ -8,7 +8,6 @@ class Shop
 
   def initialize
     @categories = Array.new
-    @vouchers = []
     @shopping_cart = Shopping_cart.new
   end
 
@@ -19,6 +18,6 @@ class Shop
 
   def create_voucher(amount)
     new_voucher = Vouchers.new(amount)
-    @vouchers << new_voucher
+    @shopping_cart.available_vouchers << new_voucher
   end
 end
