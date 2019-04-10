@@ -24,8 +24,12 @@ class Shopping_cart
   end
 
   def apply_voucher(voucher)
-    @vouchers_applied << voucher
-    @total_cost -= voucher.amount
+    if @vouchers_applied.length > 0
+      raise 'Voucher already applied'
+    else
+      @vouchers_applied << voucher
+      @total_cost -= voucher.amount
+    end
   end
 
 end

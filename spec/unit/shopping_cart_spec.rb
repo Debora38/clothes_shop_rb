@@ -41,4 +41,13 @@ RSpec.describe Shopping_cart do
     subject.apply_voucher(voucher)
     expect(subject.total_cost).to eq 94
   end
+
+  it "should not apply more than 1 voucher" do
+    shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4)
+    voucher = double('voucher', :amount => 5)
+    subject.add_to_cart(shoes)
+    subject.apply_voucher(voucher)
+    expect { subject.apply_voucher(voucher) }.to raise_error('Voucher already applied')
+    expect(subject.total_cost).to eq 94
+  end
 end
