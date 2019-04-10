@@ -7,12 +7,18 @@ class Shopping_cart
   end
 
   def add_to_cart(item)
-    @items_in_cart << item
-    @total_cost += item.price
+    if item.availability >= 1
+      @items_in_cart << item
+      item.availability -= 1
+      @total_cost += item.price
+    else
+      raise 'No availability'
+    end
   end
 
   def remove_item_from_cart(item)
     @items_in_cart.delete(item)
     @total_cost -= item.price
+    item.availability += 1
   end
 end
