@@ -8,4 +8,8 @@ class Shopping_cart
   def add_to_cart(item)
     @items_in_cart << item
   end
+
+  def remove_item_from_cart(item)
+    @items_in_cart.delete(item)
+  end
 end
