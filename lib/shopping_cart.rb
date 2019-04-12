@@ -20,7 +20,7 @@ class Shopping_cart
   end
 
   def remove_item_from_cart(item)
-    @items_in_cart.delete(item)
+    remove_item(item)
     @total_cost -= item.price
     item.availability += 1
     check_criteria_for_any_voucher
@@ -37,6 +37,10 @@ class Shopping_cart
   end
 
   private
+
+  def remove_item(item)
+    @items_in_cart.slice!(@items_in_cart.index(item))
+  end
 
   def apply_discount
     @vouchers_applied << @voucher
