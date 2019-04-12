@@ -29,7 +29,7 @@ class Shopping_cart
   def apply_voucher(code)
     if @vouchers_applied.length > 0
       raise 'A voucher is already applied'
-    elsif (find_valid_voucher(code) != nil) && valid_cart_criteria
+    elsif (find_valid_voucher(code) != nil) && valid_cart_criteria?
       apply_discount
     else
       raise 'Invalid voucher or cart criteria'
@@ -54,7 +54,7 @@ class Shopping_cart
     }.first
   end
 
-  def valid_cart_criteria
+  def valid_cart_criteria?
     @voucher.amount == 5 ||
     @voucher.amount == 10 && @total_cost > 50 ||
     @voucher.amount == 15 && @total_cost > 75 && one_footwear_item?
@@ -73,7 +73,7 @@ class Shopping_cart
   def check_criteria_for_any_voucher
     if @vouchers_applied.length > 0
       @voucher = @vouchers_applied.first
-      remove_voucher if !valid_cart_criteria
+      remove_voucher if !valid_cart_criteria?
     end
   end
 
