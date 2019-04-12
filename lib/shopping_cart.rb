@@ -36,6 +36,10 @@ class Shopping_cart
         raise 'Invalid voucher'
       end
     end
+    check_total_cost
   end
 
+  def check_total_cost
+    @total_cost = 0 if @total_cost < 0
+  end
 end
