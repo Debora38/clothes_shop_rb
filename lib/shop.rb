@@ -4,7 +4,7 @@ require_relative 'vouchers'
 
 class Shop
 
-  attr_reader :categories, :shopping_cart, :vouchers
+  attr_reader :categories, :shopping_cart
 
   def initialize
     @categories = Array.new
@@ -16,8 +16,8 @@ class Shop
     @categories << new_category
   end
 
-  def create_voucher(amount)
-    new_voucher = Vouchers.new(amount)
+  def create_voucher(amount, code)
+    new_voucher = Vouchers.new(amount, code)
     @shopping_cart.available_vouchers << new_voucher
   end
 end

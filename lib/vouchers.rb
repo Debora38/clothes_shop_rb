@@ -1,7 +1,10 @@
 class Vouchers
-  attr_reader :amount
+  attr_reader :amount, :code
 
-  def initialize(amount)
+  def initialize(amount, code)
     @amount = amount
+    @code = code
   end
+
+
 end

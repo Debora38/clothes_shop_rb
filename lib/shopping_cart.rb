@@ -25,13 +25,12 @@ class Shopping_cart
     item.availability += 1
   end
 
-  def apply_voucher(voucher)
+  def apply_voucher(code)
     if @vouchers_applied.length > 0
       raise 'A voucher is already applied'
     else
-      if @available_vouchers.include?(voucher)
-        @vouchers_applied << voucher
-        @total_cost -= voucher.amount
+      if find_valid_voucher(code)
+        apply_discount(code)
       else
         raise 'Invalid voucher'
       end
@@ -41,5 +40,17 @@ class Shopping_cart
 
   def check_total_cost
     @total_cost = 0 if @total_cost < 0
+  end
+
+  def apply_discount(code)
+    find_valid_voucher(code)
+    @vouchers_applied << @voucher
+    @total_cost -= @voucher.amount
+  end
+
+  def find_valid_voucher(code)
+    @voucher = @available_vouchers.select {|available_voucher|
+      available_voucher.code == code
+    }.first
   end
 end
