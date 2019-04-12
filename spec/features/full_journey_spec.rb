@@ -4,13 +4,13 @@ RSpec.describe 'features' do
   it "should allow a user to complete a full journey on our website" do
     shop = Shop.new
     shop.create_category('womensfootwear')
-    shop.create_category('womenswear')
+    shop.create_category('womenscasualwear')
     womensfootwear = shop.categories[0]
-    womenswear = shop.categories[1]
+    womenscasualwear = shop.categories[1]
     womensfootwear.create_item('Almond Toe Court Shoes, Patent Black', 99, 5)
     shoes = womensfootwear.items[0]
-    womenswear.create_item('Cotton Shorts, Medium Red', 30, 5)
-    shorts = womenswear.items[0]
+    womenscasualwear.create_item('Cotton Shorts, Medium Red', 30, 5)
+    shorts = womenscasualwear.items[0]
     voucher_five = shop.create_voucher(5, 'voucher5')
     voucher_ten = shop.create_voucher(10, 'voucher10')
     voucher_fifteen = shop.create_voucher(15, 'voucher15')
