@@ -55,6 +55,13 @@ class Shopping_cart
 
   def valid_cart_criteria
     @voucher.code == 'voucher5' ||
-    @voucher.code == 'voucher10' && @total_cost > 50
+    @voucher.code == 'voucher10' && @total_cost > 50 ||
+    @voucher.code == 'voucher15' && @total_cost > 75 && one_footwear_item?
+  end
+
+  def one_footwear_item?
+    @items_in_cart.any? { |item|
+      item.category == 'womensfootwear' || item.category == 'mensfootwear'
+    }
   end
 end
