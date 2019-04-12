@@ -43,9 +43,9 @@ class Shopping_cart
   end
 
   def apply_discount
-    @vouchers_applied << @voucher
     @total_cost -= @voucher.amount
     check_total_cost
+    @vouchers_applied << @voucher
   end
 
   def find_valid_voucher(code)
