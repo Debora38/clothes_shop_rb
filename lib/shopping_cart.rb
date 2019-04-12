@@ -21,9 +21,9 @@ class Shopping_cart
 
   def remove_item_from_cart(item)
     remove_item(item)
-    @total_cost -= item.price
     item.availability += 1
     check_criteria_for_any_voucher
+    @total_cost -= item.price
   end
 
   def apply_voucher(code)
