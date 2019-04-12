@@ -23,6 +23,7 @@ class Shopping_cart
     @items_in_cart.delete(item)
     @total_cost -= item.price
     item.availability += 1
+    check_criteria_for_any_voucher
   end
 
   def apply_voucher(code)
@@ -33,18 +34,14 @@ class Shopping_cart
     else
       raise 'Invalid voucher or cart criteria'
     end
-    check_total_cost
   end
 
   private
 
-  def check_total_cost
-    @total_cost = 0 if @total_cost < 0
-  end
-
   def apply_discount
     @vouchers_applied << @voucher
     @total_cost -= @voucher.amount
+    check_total_cost
   end
 
   def find_valid_voucher(code)
@@ -63,5 +60,21 @@ class Shopping_cart
     @items_in_cart.any? { |item|
       item.category == 'womensfootwear' || item.category == 'mensfootwear'
     }
+  end
+
+  def check_total_cost
+    @total_cost = 0 if @total_cost < 0
+  end
+
+  def check_criteria_for_any_voucher
+    if @vouchers_applied.length > 0
+      @voucher = @vouchers_applied.first
+      remove_voucher if !valid_cart_criteria
+    end
+  end
+
+  def remove_voucher
+    @vouchers_applied.clear
+    @total_cost += @voucher.amount
   end
 end

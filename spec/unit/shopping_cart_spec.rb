@@ -115,5 +115,31 @@ RSpec.describe Shopping_cart do
       expect { subject.apply_voucher('voucher15') }.to raise_error('Invalid voucher or cart criteria')
       expect(subject.total_cost).to eq 99
     end
+
+    it "should remove a voucher if an item is removed from the cart and the criteria do not meet anymore" do
+      shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4, :category => 'womensfootwear')
+      item = double('item', :name => 'item', :price => 15, :availability => 5, :availability= => 4, category: 'womenswear')
+      voucher = double('voucher', :amount => 15, :code => 'voucher15')
+      subject.available_vouchers.push(voucher)
+      subject.add_to_cart(shoes)
+      subject.add_to_cart(item)
+      subject.apply_voucher('voucher15')
+      subject.remove_item_from_cart(shoes)
+      expect(subject.vouchers_applied.length).to eq 0
+      expect(subject.total_cost).to eq 15
+    end
+
+    it "should leave a voucher if an item is removed from the cart but the criteria still meet" do
+      shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4, :category => 'womensfootwear')
+      item = double('item', :name => 'item', :price => 15, :availability => 5, :availability= => 4, category: 'womenswear')
+      voucher = double('voucher', :amount => 15, :code => 'voucher15')
+      subject.available_vouchers.push(voucher)
+      subject.add_to_cart(shoes)
+      subject.add_to_cart(item)
+      subject.apply_voucher('voucher15')
+      subject.remove_item_from_cart(item)
+      expect(subject.vouchers_applied.length).to eq 1
+      expect(subject.total_cost).to eq 84
+    end
   end
 end
