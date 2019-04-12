@@ -1,5 +1,5 @@
 class Shopping_cart
-  attr_reader :items_in_cart, :total_cost
+  attr_reader :items_in_cart, :total_cost, :vouchers_applied
   attr_accessor :available_vouchers
 
   def initialize
@@ -28,22 +28,21 @@ class Shopping_cart
   def apply_voucher(code)
     if @vouchers_applied.length > 0
       raise 'A voucher is already applied'
+    elsif (find_valid_voucher(code) != nil) && valid_cart_criteria
+      apply_discount
     else
-      if find_valid_voucher(code)
-        apply_discount(code)
-      else
-        raise 'Invalid voucher'
-      end
+      raise 'Invalid voucher or cart criteria'
     end
     check_total_cost
   end
+
+  private
 
   def check_total_cost
     @total_cost = 0 if @total_cost < 0
   end
 
-  def apply_discount(code)
-    find_valid_voucher(code)
+  def apply_discount
     @vouchers_applied << @voucher
     @total_cost -= @voucher.amount
   end
@@ -52,5 +51,10 @@ class Shopping_cart
     @voucher = @available_vouchers.select {|available_voucher|
       available_voucher.code == code
     }.first
+  end
+
+  def valid_cart_criteria
+    @voucher.code == 'voucher5' ||
+    @voucher.code == 'voucher10' && @total_cost > 50
   end
 end

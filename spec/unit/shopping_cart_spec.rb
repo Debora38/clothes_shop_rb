@@ -68,7 +68,25 @@ RSpec.describe Shopping_cart do
       voucher = double('voucher', :amount => 5, :code => 'voucher5')
       subject.available_vouchers.push(voucher)
       subject.add_to_cart(shoes)
-      expect { subject.apply_voucher('voucher3') }.to raise_error('Invalid voucher')
+      expect { subject.apply_voucher('voucher3') }.to raise_error('Invalid voucher or cart criteria')
+    end
+
+    it "should apply £10 off with voucher10 if when total cost is > 50" do
+      shoes = double('shoes', :name => 'shoes', :price => 99, :availability => 5, :availability= => 4)
+      voucher = double('voucher', :amount => 10, :code => 'voucher10')
+      subject.available_vouchers.push(voucher)
+      subject.add_to_cart(shoes)
+      subject.apply_voucher('voucher10')
+      expect(subject.total_cost).to eq 89
+    end
+
+    it "should not apply a voucher10 when the total cost is < 50" do
+      shoes = double('shoes', :name => 'shoes', :price => 49, :availability => 5, :availability= => 4)
+      voucher = double('voucher', :amount => 10, :code => 'voucher10')
+      subject.available_vouchers.push(voucher)
+      subject.add_to_cart(shoes)
+      expect { subject.apply_voucher('voucher10') }.to raise_error('Invalid voucher or cart criteria')
+      expect(subject.total_cost).to eq 49
     end
   end
 end
