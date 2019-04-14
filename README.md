@@ -64,3 +64,4 @@ These instructions assume that ruby and rspec are installed in the machine.
 - try removing items with `shop.shopping_cart.remove_item_from_cart(pinkdress)` replacing _pinkdress_ with any variable of clothes listed here above
 - notice how a voucher can not be applied if the shopping cart does not meet the criteria for it
 - notice how a voucher is removed while removing items from the shopping cart, when the criteria don't meet anymore
+- notice how maximum one voucher can be applied per shopping cart
