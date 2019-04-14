@@ -39,7 +39,7 @@ The products available are listed here below, along with the variable name in or
 ##### VOUCHERS
 There are some available vouchers as well, to be applied with a code depending on the criteria listed:
 
-- £5.00 off your order with code 'voucher5'
+- £5.00 off your order with code 'voucher5' (total spend of at least £5)
 - £10.00 off with code 'voucher10' when you spend over £50.00
 - £15.00 off with code 'voucher15' when you have bought at least one footwear item and spent over £75.00
 
