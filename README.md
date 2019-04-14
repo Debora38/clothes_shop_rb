@@ -61,6 +61,7 @@ These instructions assume that ruby and rspec are installed in the machine.
 - start adding to cart with `shop.shopping_cart.add_to_cart(pinkdress)` replacing _pinkdress_ to any of the variables listed here above
 - try applying a voucher `shop.shopping_cart.apply_voucher('voucher5')` replacing _voucher5_ to any of the voucher codes listed here above ('voucher10', 'voucher15')
 - try removing items with `shop.shopping_cart.remove_item_from_cart(pinkdress)` replacing _pinkdress_ with any variable of clothes listed here above
+- notice how an item with no availability can not be added to the cart
 - notice how a voucher can not be applied if the shopping cart does not meet the criteria for it
 - notice how a voucher is removed while removing items from the shopping cart, when the criteria don't meet anymore
 - notice how maximum one voucher can be applied per shopping cart
