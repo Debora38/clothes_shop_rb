@@ -39,7 +39,7 @@ The products available are listed here below, along with the variable name in or
 ##### VOUCHERS
 There are some available vouchers as well, to be applied with a code depending on the criteria listed:
 
-- £5.00 off your order with code 'voucher5'
+- £5.00 off your order with code 'voucher5' (total spend of at least £5)
 - £10.00 off with code 'voucher10' when you spend over £50.00
 - £15.00 off with code 'voucher15' when you have bought at least one footwear item and spent over £75.00
 
@@ -57,10 +57,10 @@ These instructions assume that ruby and rspec are installed in the machine.
 - move into the folder from the command line
 - run rspec to check that all tests pass
 - run `irb`
-- `require './lib/shop'`
-- copy and paste into irb all the content of the file 'store_product_data' to stock the store with the information listed above
+- For simplicity, copy and paste into irb all the content of the file 'store_product_data' to stock the store with the information listed above
 - start adding to cart with `shop.shopping_cart.add_to_cart(pinkdress)` replacing _pinkdress_ to any of the variables listed here above
 - try applying a voucher `shop.shopping_cart.apply_voucher('voucher5')` replacing _voucher5_ to any of the voucher codes listed here above ('voucher10', 'voucher15')
 - try removing items with `shop.shopping_cart.remove_item_from_cart(pinkdress)` replacing _pinkdress_ with any variable of clothes listed here above
 - notice how a voucher can not be applied if the shopping cart does not meet the criteria for it
 - notice how a voucher is removed while removing items from the shopping cart, when the criteria don't meet anymore
+- notice how maximum one voucher can be applied per shopping cart
