@@ -22,8 +22,8 @@ class Shopping_cart
   def remove_item_from_cart(item)
     remove_item(item)
     item.availability += 1
-    check_criteria_for_any_voucher
     @total_cost -= item.price
+    check_criteria_for_any_voucher
   end
 
   def apply_voucher(code)
@@ -44,7 +44,6 @@ class Shopping_cart
 
   def apply_discount
     @total_cost -= @voucher.amount
-    check_total_cost
     @vouchers_applied << @voucher
   end
 
@@ -55,7 +54,7 @@ class Shopping_cart
   end
 
   def valid_cart_criteria?
-    @voucher.amount == 5 ||
+    @voucher.amount == 5 && @total_cost >= 5 ||
     @voucher.amount == 10 && @total_cost > 50 ||
     @voucher.amount == 15 && @total_cost > 75 && one_footwear_item?
   end
@@ -64,10 +63,6 @@ class Shopping_cart
     @items_in_cart.any? { |item|
       item.category == 'womensfootwear' || item.category == 'mensfootwear'
     }
-  end
-
-  def check_total_cost
-    @total_cost = 0 if @total_cost < 0
   end
 
   def check_criteria_for_any_voucher

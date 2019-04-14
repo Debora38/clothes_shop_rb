@@ -61,4 +61,7 @@ These instructions assume that ruby and rspec are installed in the machine.
 - copy and paste into irb all the content of the file 'store_product_data' to stock the store with the information listed above
 - start adding to cart with `shop.shopping_cart.add_to_cart(pinkdress)` replacing _pinkdress_ to any of the variables listed here above
 - try applying a voucher `shop.shopping_cart.apply_voucher('voucher5')` replacing _voucher5_ to any of the voucher codes listed here above ('voucher10', 'voucher15')
-- try removing items with `shop.shopping_cart.remove_item_from_cart(pinkdress)` replacing _pinkdress_ with any variable of cloth listed here above
+- try removing items with `shop.shopping_cart.remove_item_from_cart(pinkdress)` replacing _pinkdress_ with any variable of clothes listed here above
+- notice how a voucher can not be applied if the shopping cart does not meet the criteria for it
+- notice how a voucher is removed while removing items from the shopping cart, when the criteria don't meet anymore
+- notice how the £5 off voucher can be appllied with any amount, but it does not allow for the total cost to go below £0

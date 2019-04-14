@@ -49,8 +49,8 @@ RSpec.describe Shopping_cart do
       voucher = double('voucher', :amount => 5, :code => 'voucher5')
       subject.available_vouchers.push(voucher)
       subject.add_to_cart(item)
-      subject.apply_voucher('voucher5')
-      expect(subject.total_cost).to eq 0
+      expect { subject.apply_voucher('voucher5') }.to raise_error('Invalid voucher or cart criteria')
+      expect(subject.total_cost).to eq 4
     end
 
     it "should not apply more than 1 voucher" do
