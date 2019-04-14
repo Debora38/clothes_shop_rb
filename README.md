@@ -57,8 +57,7 @@ These instructions assume that ruby and rspec are installed in the machine.
 - move into the folder from the command line
 - run rspec to check that all tests pass
 - run `irb`
-- `require './lib/shop'`
-- copy and paste into irb all the content of the file 'store_product_data' to stock the store with the information listed above
+- For simplicity, copy and paste into irb all the content of the file 'store_product_data' to stock the store with the information listed above
 - start adding to cart with `shop.shopping_cart.add_to_cart(pinkdress)` replacing _pinkdress_ to any of the variables listed here above
 - try applying a voucher `shop.shopping_cart.apply_voucher('voucher5')` replacing _voucher5_ to any of the voucher codes listed here above ('voucher10', 'voucher15')
 - try removing items with `shop.shopping_cart.remove_item_from_cart(pinkdress)` replacing _pinkdress_ with any variable of clothes listed here above
