@@ -11,7 +11,7 @@ This Clothes Shop has six categories of clothes:
 
 The products available are listed here below, along with the variable name in order to use the program on irb.
 
-##### WOMEN'S FOOTWEAR (_womensfootwear_)
+#### WOMEN'S FOOTWEAR (_womensfootwear_)
 - _almondtoecourtshoes_: 'Almond Toe Court Shoes, Patent Black', £99.00
 - _suedeshoesblue_: 'Suede Shoes, Blue', £42.00
 
@@ -36,7 +36,7 @@ The products available are listed here below, along with the variable name in or
 - _sharkskinwaistcoat_: 'Sharkskin Waistcoat, Charcoal', £75.00
 - _blazer_: 'Lightweight Patch Pocket Blazer, Deer', £175.50
 
-##### VOUCHERS
+#### VOUCHERS
 There are some available vouchers as well, to be applied with a code depending on the criteria listed:
 
 - £5.00 off your order with code 'voucher5' (total spend of at least £5)
@@ -65,3 +65,7 @@ These instructions assume that ruby and rspec are installed in the machine.
 - notice how a voucher can not be applied if the shopping cart does not meet the criteria for it
 - notice how a voucher is removed while removing items from the shopping cart, when the criteria don't meet anymore
 - notice how maximum one voucher can be applied per shopping cart
+
+#### DEMO
+The program has been ran for demonstration and can be seen in the video uploaded:
+https://youtu.be/QfUOofRCXWo
