@@ -51,20 +51,20 @@ shop.create_category('womensformalwear')
 womensformalwear = shop.categories[4]
 
 womensformalwear.create_item('Bird Print Dress, Black', 270, 10)
-birdprintdress = womenscasualwear.items[0]
+birdprintdress = womensformalwear.items[0]
 
 womensformalwear.create_item('Mid Twist Cut­Out Dress, Pink', 540, 5)
-pinkdress = womenscasualwear.items[1]
+pinkdress = womensformalwear.items[1]
 
 # MEN'S FORMAL WEAR
 shop.create_category('mensformalwear')
 mensformalwear = shop.categories[5]
 
 mensformalwear.create_item('Sharkskin Waistcoat, Charcoal', 75, 2)
-sharkskinwaistcoat = menscasualwear.items[0]
+sharkskinwaistcoat = mensformalwear.items[0]
 
 mensformalwear.create_item('Lightweight Patch Pocket Blazer, Deer', 175.50, 1)
-blazer = menscasualwear.items[1]
+blazer = mensformalwear.items[1]
 
 # VOUCHERS
 shop.create_voucher(5, 'voucher5')
