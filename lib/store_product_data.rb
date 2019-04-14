@@ -1,3 +1,4 @@
+require './lib/shop'
 shop = Shop.new
 
 # WOMEN'S FOOTWEAR
